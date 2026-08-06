@@ -1,0 +1,121 @@
+button,
+img,
+.logo,
+.hero-image {
+    user-select: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--ff-heading);
+}
+
+.btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .65rem;
+    padding: var(--space-sm) var(--space-lg);
+    border: 1px solid transparent;
+    border-radius: var(--radius-full);
+    font-family: var(--ff-body);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: none;
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    white-space: nowrap;
+}
+
+.btn-primary{
+    color: var(--clr-white);
+    background: rgba(255,255,255,.05);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: var(--shadow-sm), var(--shadow-glow);
+}
+
+.btn-primary:hover{
+    background: var(--clr-primary);
+    color: var(--clr-bg);
+    border-color: var(--clr-primary);
+    box-shadow: var(--shadow-md),var(--shadow-glow-lg);
+    transform: translateY(-3px);
+}
+
+.btn-secondary{
+    background: transparent;
+    color: var(--clr-white);
+    border: 1px solid rgba(255,255,255,.2);
+}
+
+.btn-secondary:hover{
+    background: rgba(255,255,255,.08);
+    border-color: var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+.btn:active{
+    transform: scale(.96);
+}
+
+.btn:focus-visible{
+    outline: 2px solid var(--clr-primary);
+    outline-offset: 4px;
+}
+
+.btn::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -120%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,.25), transparent);
+    transition: left .8s ease;
+}
+
+.btn:hover::before{
+    left: 120%;
+}
+
+.cursor {
+    pointer-events: none;
+    
+}
+
+.cursor .dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--clr-primary);
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+}
+
+.cursor .ring {
+    position: fixed;
+    width: 40px;
+    z-index: 99999;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid var(--clr-primary);
+    transform: translate(-50%, -50%);
+}
+
+.cursor-particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--clr-primary);
+    pointer-events: none;
+    z-index: var(--z-cursor);
+    will-change: transform, opacity;
+    box-shadow: 0 0 10px rgba(0, 229, 139, .65),
+                0 0 20px rgba(0, 229, 139, .35);
+    transform: translate(-50%, -50%);
+}
+
