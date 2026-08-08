@@ -6,8 +6,17 @@
     <title>Vesper</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+      integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/utility.css" />
     <link rel="stylesheet" href="css/media.css" />
@@ -30,7 +39,10 @@
           <div class="nav-right">
             <button class="theme-toggle" aria-label="Toggle Theme">
               <div class="toggle-thumb">
-                <i class="fa-solid fa-moon" style="color: rgb(242, 243, 245);"></i>
+                <i
+                  class="fa-solid fa-moon"
+                  style="color: rgb(242, 243, 245)"
+                ></i>
               </div>
             </button>
 
@@ -38,15 +50,162 @@
               <i class="fa-solid fa-bag-shopping"></i>
               <span class="cart-count">0</span>
             </button>
-          </div>
 
-          <div class="burger">
-            <div class="line1 line"></div>
-            <div class="line2 line"></div>
-            <div class="line3 line"></div>
+            <div class="burger" aria-label="Open Menu">
+              <div class="line1 line"></div>
+              <div class="line2 line"></div>
+              <div class="line3 line"></div>
+            </div>
           </div>
         </nav>
+
+        <div class="mobile-menu">
+          <div class="mobile-menu-header">
+            <div class="mobile-logo">
+              <h2>Vesper</h2>
+              <span>Crafted For Time</span>
+            </div>
+          </div>
+
+          <ul class="mobile-links">
+            <li>
+              <span>01</span>
+              <a href="#" class="active">Home</a>
+            </li>
+
+            <li>
+              <span>02</span>
+              <a href="#">Collections</a>
+            </li>
+
+            <li>
+              <span>03</span>
+              <a href="#">Craftsmanship</a>
+            </li>
+
+            <li>
+              <span>04</span>
+              <a href="#">Story</a>
+            </li>
+
+            <li>
+              <span>05</span>
+              <a href="#">Reviews</a>
+            </li>
+
+            <li>
+              <span>06</span>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+
+          <div class="mobile-menu-footer">
+            <button class="theme-toggle mobile-theme-toggle">
+              <div class="toggle-thumb">
+                <i class="fa-solid fa-moon"></i>
+              </div>
+            </button>
+
+            <button class="cart-btn mobile-cart-btn">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span class="cart-count">0</span>
+            </button>
+          </div>
+        </div>
       </header>
+      <section class="hero">
+        <!-- Background Effects -->
+        <div class="hero-bg">
+          <div class="hero-glow glow-1"></div>
+          <div class="hero-glow glow-2"></div>
+
+          <h2 class="hero-outline">VESPER</h2>
+        </div>
+
+        <div class="container">
+          <!-- Left Floating Card -->
+          <div class="hero-card hero-card-left">
+            <span class="hero-card-label"> Swiss Crafted </span>
+
+            <h3>Sapphire Crystal</h3>
+
+            <p>
+              Precision engineered with uncompromising materials for timeless
+              elegance.
+            </p>
+          </div>
+
+          <!-- Main Content -->
+          <div class="hero-content">
+            <span class="hero-subtitle"> Luxury • Precision • Legacy </span>
+
+            <h1>
+              Time,
+              <br />
+              Reimagined.
+            </h1>
+
+            <p class="hero-description">
+              Discover handcrafted luxury watches that combine Swiss precision,
+              premium materials, and timeless design for every generation.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="#" class="btn btn-primary"> Explore Collection </a>
+
+              <a href="#" class="btn hero-secondary"> Our Story </a>
+            </div>
+          </div>
+
+          <!-- Watch -->
+          <div class="hero-watch-wrapper">
+            <div class="hero-watch">
+              <img src="images/watch.png" alt="Luxury Vesper Watch" />
+            </div>
+          </div>
+
+          <!-- Right Floating Card -->
+          <div class="hero-card hero-card-right">
+            <span class="hero-card-label"> Limited Edition </span>
+
+            <h3>200 Pieces Only</h3>
+
+            <p>
+              Every masterpiece is individually numbered and crafted for
+              collectors.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="hero-bottom">
+          <div class="hero-stats">
+            <div class="stat">
+              <h2>25+</h2>
+
+              <span> Years of Heritage </span>
+            </div>
+
+            <div class="stat">
+              <h2>10K+</h2>
+
+              <span> Happy Clients </span>
+            </div>
+
+            <div class="stat">
+              <h2>99%</h2>
+
+              <span> Customer Satisfaction </span>
+            </div>
+          </div>
+
+          <div class="scroll-indicator">
+            <span>Scroll</span>
+
+            <div class="scroll-line"></div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div class="cursor">

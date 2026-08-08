@@ -208,5 +208,15 @@ function navbarFuncAndAnimation() {
   const themeToggle = document.querySelector(".theme-toggle");
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("light");
-  });  
+  });
+
+  // Navbar burger functionality
+  const burger = document.querySelector(".burger");
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('clicked');
+    const mobileMenu = document.querySelector(".mobile-menu");
+    mobileMenu.classList.toggle("is-open");
+  })
 }
+
+navbarFuncAndAnimation();
