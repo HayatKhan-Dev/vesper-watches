@@ -220,3 +220,226 @@ function navbarFuncAndAnimation() {
 }
 
 navbarFuncAndAnimation();
+
+
+// =========================================
+// Magnetic Elements
+// =========================================
+
+function magneticButtons() {
+
+    // Find every element that should have
+    // the magnetic effect.
+    const magneticElements = document.querySelectorAll(".magnetic");
+    magneticElements.forEach((element) => {
+
+        // Create a quick animation setter for X.
+        const moveX = gsap.quickTo(element, "x", {
+            duration: 0.45,
+            ease: "power3.out"
+        });
+
+        // Create a quick animation setter for Y.
+        const moveY = gsap.quickTo(element, "y", {
+            duration: 0.45,
+            ease: "power3.out"
+        });
+
+
+        // When the cursor enters the element.
+        element.addEventListener("mouseenter", () => {
+            gsap.to(element, {
+                scale: 1.02,
+                duration: 0.35,
+                ease: "power3.out"
+            });
+        });
+
+        // Track the cursor while it is inside.
+        element.addEventListener("mousemove", (e) => {
+            // Get the element's position and dimensions.
+            const rect = element.getBoundingClientRect();
+            // Find the center of the element.
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            // Calculate cursor distance from the center.
+            const distanceX = e.clientX - centerX;
+            const distanceY = e.clientY - centerY;
+            // Reduce the movement so the button
+            // only follows the cursor slightly.
+            const strength = 0.25;
+            // Move the element toward the cursor.
+            moveX(distanceX * strength);
+            moveY(distanceY * strength);
+        });
+
+        // When the cursor leaves the element.
+        element.addEventListener("mouseleave", () => {
+            // Return the element smoothly to its
+            // original position.
+            moveX(0);
+            moveY(0);
+            // Return the scale to normal.
+            gsap.to(element, {
+                scale: 1,
+                duration: 0.45,
+                ease: "elastic.out(1, 0.5)"
+            });
+        });
+    });
+}
+
+
+magneticButtons();
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const section = document.querySelector("#craftsmanship");
+
+    if (!section) return;
+
+
+    /* -------------------------------------------------
+       ELEMENTS
+    ------------------------------------------------- */
+
+    const images = section.querySelectorAll(".craft-image");
+    const points = section.querySelectorAll(".craft-point");
+    const currentNumber = section.querySelector(".current-number");
+    const progressFill = section.querySelector(".progress-fill");
+
+
+    /* -------------------------------------------------
+       SAFETY CHECK
+    ------------------------------------------------- */
+
+    if (
+        images.length === 0 ||
+        points.length === 0
+    ) {
+        return;
+    }
+
+
+    /* -------------------------------------------------
+       UPDATE CRAFTSMANSHIP
+    ------------------------------------------------- */
+
+    function updateCraftsmanship() {
+
+        const rect = section.getBoundingClientRect();
+
+        /*
+         * How far have we travelled through
+         * the Craftsmanship section?
+         *
+         * 0 = section just entered
+         * 1 = section completely finished
+         */
+
+        const scrollableDistance =
+            section.offsetHeight - window.innerHeight;
+
+        let progress =
+            -rect.top / scrollableDistance;
+
+
+        /* Keep progress between 0 and 1 */
+
+        progress = Math.max(0, Math.min(1, progress));
+
+
+        /* -------------------------------------------------
+           CALCULATE CURRENT STEP
+        ------------------------------------------------- */
+
+        const totalSteps = images.length;
+
+        let index = Math.floor(progress * totalSteps);
+
+        /*
+         * Prevent index from becoming 3
+         * when progress reaches exactly 1.
+         */
+
+        index = Math.min(index, totalSteps - 1);
+
+
+        /* -------------------------------------------------
+           CHANGE IMAGES
+        ------------------------------------------------- */
+
+        images.forEach((image, i) => {
+
+            image.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
+
+        /* -------------------------------------------------
+           CHANGE STORY POINT
+        ------------------------------------------------- */
+
+        points.forEach((point, i) => {
+
+            point.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
+
+        /* -------------------------------------------------
+           UPDATE NUMBER
+        ------------------------------------------------- */
+
+        if (currentNumber) {
+
+            currentNumber.textContent =
+                String(index + 1).padStart(2, "0");
+
+        }
+
+
+        /* -------------------------------------------------
+           UPDATE PROGRESS BAR
+        ------------------------------------------------- */
+
+        if (progressFill) {
+
+            /*
+             * 0% → 100%
+             */
+
+            progressFill.style.height =
+                `${Math.max(33.333, (index + 1) * 33.333)}%`;
+
+        }
+
+    }
+
+
+    /* -------------------------------------------------
+       LISTEN TO SCROLL
+    ------------------------------------------------- */
+
+    window.addEventListener(
+        "scroll",
+        updateCraftsmanship,
+        { passive: true }
+    );
+
+
+    /* -------------------------------------------------
+       INITIAL STATE
+    ------------------------------------------------- */
+
+    updateCraftsmanship();
+
+});
