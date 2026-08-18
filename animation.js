@@ -1353,6 +1353,1505 @@ function craftsmanshipAnimation() {
 }
 craftsmanshipAnimation();
 
+function storyAnimation() {
+  const story = document.querySelector(".story");
+
+  if (!story) return;
+
+  const time = story.querySelector(".story-title-top");
+  const is = story.querySelector(".story-title-left");
+  const not = story.querySelector(".story-title-right");
+  const measured = story.querySelector(".story-title-bottom");
+
+  const watch = story.querySelector(".story-watch");
+  const watchObject = story.querySelector(".story-watch-object");
+  const watchImage = story.querySelector(".story-watch-object img");
+
+  const orbit1 = story.querySelector(".story-orbit-1");
+  const orbit2 = story.querySelector(".story-orbit-2");
+
+  const glow = story.querySelector(".story-watch-glow");
+
+  const markers = story.querySelectorAll(".story-marker");
+
+  const philosophy = story.querySelector(".story-philosophy");
+  const philosophyLabel = story.querySelector(".story-philosophy-label");
+  const philosophyTitle = philosophy?.querySelector("h2");
+  const philosophyText = philosophy?.querySelector("p");
+
+  const data = story.querySelector(".story-data");
+  const dataItems = story.querySelectorAll(".story-data-item");
+
+  const cta = story.querySelector(".story-cta");
+  const footer = story.querySelector(".story-footer");
+
+  const header = story.querySelector(".story-header");
+
+  const bgWord = story.querySelector(".story-bg-word");
+  const grid = story.querySelector(".story-grid");
+
+
+  /*
+  =====================================================
+  INITIAL STATES
+  =====================================================
+  */
+
+  gsap.set(header, {
+    opacity: 0,
+    y: -30
+  });
+
+  gsap.set(bgWord, {
+    opacity: 0,
+    scale: 0.8,
+    rotation: -100
+  });
+
+  gsap.set(grid, {
+    opacity: 0
+  });
+
+  gsap.set(time, {
+    opacity: 0,
+    y: 160,
+    scale: 0.8
+  });
+
+  gsap.set(is, {
+    opacity: 0,
+    x: -220,
+    rotation: -12
+  });
+
+  gsap.set(not, {
+    opacity: 0,
+    x: 220,
+    rotation: 12
+  });
+
+  gsap.set(measured, {
+    opacity: 0,
+    y: 180,
+    scale: 0.8
+  });
+
+  gsap.set(watch, {
+    opacity: 0,
+    scale: 0.65,
+    rotation: -12
+  });
+
+  gsap.set(watchObject, {
+    y: 40,
+    rotation: 0
+  });
+
+  gsap.set(watchImage, {
+    scale: 0.85
+  });
+
+  gsap.set([orbit1, orbit2], {
+    opacity: 0,
+    scale: 0.5
+  });
+
+  gsap.set(glow, {
+    opacity: 0,
+    scale: 0.4
+  });
+
+  gsap.set(markers, {
+    opacity: 0,
+    scale: 0
+  });
+
+  gsap.set(philosophyLabel, {
+    opacity: 0,
+    y: 25
+  });
+
+  gsap.set(philosophyTitle, {
+    opacity: 0,
+    y: 50
+  });
+
+  gsap.set(philosophyText, {
+    opacity: 0,
+    y: 30
+  });
+
+  gsap.set(data, {
+    opacity: 0,
+    x: 50
+  });
+
+  gsap.set(cta, {
+    opacity: 0,
+    y: -30
+  });
+
+  gsap.set(footer, {
+    opacity: 0
+  });
+
+
+  /*
+  =====================================================
+  MASTER STORY TIMELINE
+  =====================================================
+  */
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: story,
+
+      start: "top top",
+      end: "bottom bottom",
+
+      scrub: 1.4,
+
+      invalidateOnRefresh: true
+    }
+  });
+
+
+  /*
+  =====================================================
+  INTRO
+  =====================================================
+  */
+
+  tl.to(header, {
+    opacity: 1,
+    y: 0,
+    duration: 0.4,
+    ease: "power3.out"
+  });
+
+  tl.to(grid, {
+    opacity: 0.25,
+    duration: 0.5
+  }, "<");
+
+  tl.to(bgWord, {
+    opacity: 0.18,
+    scale: 1,
+    rotation: -90,
+    duration: 0.8,
+    ease: "power3.out"
+  }, "<");
+
+
+  /*
+  =====================================================
+  TIME
+  =====================================================
+  */
+
+  tl.to(watch, {
+    opacity: 1,
+    scale: 1,
+    rotation: 0,
+    duration: 1,
+    ease: "power4.out"
+  });
+
+  tl.to(glow, {
+    opacity: 0.13,
+    scale: 1,
+    duration: 1,
+    ease: "power3.out"
+  }, "<");
+
+  tl.to([orbit1, orbit2], {
+    opacity: 1,
+    scale: 1,
+    duration: 1,
+    stagger: 0.15,
+    ease: "power3.out"
+  }, "<");
+
+  tl.to(time, {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    duration: 1,
+    ease: "power4.out"
+  }, "-=0.4");
+
+
+  /*
+  =====================================================
+  TIME → IS
+  =====================================================
+  */
+
+  tl.to(time, {
+    y: -100,
+    scale: 0.85,
+    opacity: 0.25,
+    duration: 0.7,
+    ease: "power3.inOut"
+  });
+
+  tl.to(is, {
+    opacity: 1,
+    x: 0,
+    rotation: 0,
+    duration: 0.8,
+    ease: "power4.out"
+  }, "-=0.4");
+
+  tl.to(watchObject, {
+    y: -15,
+    rotation: 7,
+    duration: 0.8,
+    ease: "power3.inOut"
+  }, "<");
+
+
+  /*
+  =====================================================
+  IS → NOT
+  =====================================================
+  */
+
+  tl.to(is, {
+    x: -100,
+    opacity: 0.2,
+    duration: 0.7,
+    ease: "power3.inOut"
+  });
+
+  tl.to(not, {
+    opacity: 1,
+    x: 0,
+    rotation: 0,
+    duration: 0.8,
+    ease: "power4.out"
+  }, "-=0.4");
+
+  tl.to(watchObject, {
+    rotation: -8,
+    y: 0,
+    duration: 0.8,
+    ease: "power3.inOut"
+  }, "<");
+
+
+  /*
+  =====================================================
+  NOT → MEASURED
+  =====================================================
+  */
+
+  tl.to(not, {
+    x: 100,
+    opacity: 0.2,
+    duration: 0.7,
+    ease: "power3.inOut"
+  });
+
+  tl.to(measured, {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    duration: 1,
+    ease: "power4.out"
+  }, "-=0.4");
+
+  tl.to(watchImage, {
+    scale: 1.08,
+    duration: 1,
+    ease: "power3.out"
+  }, "<");
+
+
+  /*
+  =====================================================
+  THE MOMENT
+  =====================================================
+  */
+
+  tl.to([time, is, measured], {
+    opacity: 0,
+    y: -30,
+    duration: 0.7,
+    ease: "power3.inOut"
+  });
+
+  tl.to(watch, {
+    scale: 1.12,
+    duration: 1,
+    ease: "power3.inOut"
+  }, "<");
+
+  tl.to(watchObject, {
+    rotation: 360,
+    duration: 1.4,
+    ease: "power2.inOut"
+  }, "<");
+
+  tl.to(glow, {
+    scale: 1.4,
+    opacity: 0.2,
+    duration: 1,
+    ease: "power3.out"
+  }, "<");
+
+  tl.to([orbit1, orbit2], {
+    scale: 1.15,
+    duration: 1,
+    ease: "power3.out"
+  }, "<");
+
+
+  /*
+  =====================================================
+  PRECISION MARKERS
+  =====================================================
+  */
+
+  tl.to(markers, {
+    opacity: 1,
+    scale: 1,
+    duration: 0.5,
+    stagger: 0.15,
+    ease: "back.out(1.7)"
+  });
+
+
+  /*
+  =====================================================
+  BUT EXPERIENCED
+  =====================================================
+  */
+
+  tl.to(philosophyLabel, {
+    opacity: 1,
+    y: 0,
+    duration: 0.5,
+    ease: "power3.out"
+  });
+
+  tl.to(philosophyTitle, {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "power4.out"
+  }, "-=0.25");
+
+  tl.to(philosophyText, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: "power3.out"
+  }, "-=0.4");
+
+
+  /*
+  =====================================================
+  DATA
+  =====================================================
+  */
+
+  tl.to(data, {
+    opacity: 1,
+    x: 0,
+    duration: 0.7,
+    ease: "power3.out"
+  });
+
+  tl.to(dataItems, {
+    opacity: 1,
+    y: 0,
+    duration: 0.4,
+    stagger: 0.12,
+    ease: "power2.out"
+  }, "<");
+
+
+  /*
+  =====================================================
+  CTA
+  =====================================================
+  */
+
+  tl.to(cta, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: "back.out(1.5)"
+  });
+
+  tl.to(footer, {
+    opacity: 1,
+    duration: 0.5
+  }, "-=0.2");
+}
+
+
+/*
+=========================================================
+START STORY ANIMATION
+=========================================================
+*/
+
+storyAnimation();
+
+/* =========================================================
+   VESPER — REVIEWS
+   Marquee + Hover + 3D Tilt + GSAP ScrollTrigger
+========================================================= */
+
+function initReviews() {
+  const section = document.querySelector(".reviews");
+
+  if (!section) return;
+
+  const track = section.querySelector(".reviews-track");
+  const cards = section.querySelectorAll(".review-card");
+
+  if (!track || !cards.length) return;
+
+  /* =====================================================
+     GSAP SAFETY
+  ===================================================== */
+
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+    console.warn("GSAP or ScrollTrigger is not loaded.");
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* =====================================================
+     MARQUEE VARIABLES
+  ===================================================== */
+
+  let position = 0;
+  let speed = 0.35;
+  let animationId;
+
+  let isHovering = false;
+
+  /* =====================================================
+     INFINITE MARQUEE
+  ===================================================== */
+
+  function animateReviews() {
+    if (!isHovering) {
+      position -= speed;
+    }
+
+    const firstCard = cards[0];
+
+    if (firstCard) {
+      const cardWidth =
+        firstCard.offsetWidth +
+        parseFloat(getComputedStyle(track).gap || 0);
+
+      /*
+       * We have duplicated cards in the HTML.
+       *
+       * Once the first set has completely moved away,
+       * reset to the beginning.
+       */
+
+      const resetPoint = cardWidth * (cards.length / 2);
+
+      if (Math.abs(position) >= resetPoint) {
+        position = 0;
+      }
+    }
+
+    /*
+     * Use transform instead of left/margin.
+     * This keeps the animation GPU friendly.
+     */
+
+    gsap.set(track, {
+      x: position,
+    });
+
+    animationId = requestAnimationFrame(animateReviews);
+  }
+
+  animateReviews();
+
+  /* =====================================================
+     CARD HOVER
+  ===================================================== */
+
+  cards.forEach((card) => {
+    /* ---------------------------------------------
+       MOUSE ENTER
+    --------------------------------------------- */
+
+    card.addEventListener("mouseenter", () => {
+      isHovering = true;
+
+      card.classList.add("is-hovered");
+
+      /*
+       * Smoothly bring card forward.
+       */
+
+      gsap.to(card, {
+        z: 80,
+        y: -18,
+        scale: 1.08,
+
+        duration: 0.45,
+
+        ease: "power3.out",
+
+        overwrite: true,
+      });
+    });
+
+    /* ---------------------------------------------
+       MOUSE MOVE
+    --------------------------------------------- */
+
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+
+      /*
+       * Mouse position inside card.
+       */
+
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+
+      /*
+       * Convert position to -1 → 1.
+       */
+
+      const normalizedX = mouseX / rect.width - 0.5;
+      const normalizedY = mouseY / rect.height - 0.5;
+
+      /*
+       * 3D rotation.
+       */
+
+      const rotateY = normalizedX * 18;
+      const rotateX = normalizedY * -18;
+
+      gsap.to(card, {
+        rotateX,
+        rotateY,
+
+        duration: 0.25,
+
+        ease: "power2.out",
+
+        overwrite: true,
+      });
+    });
+
+    /* ---------------------------------------------
+       MOUSE LEAVE
+    --------------------------------------------- */
+
+    card.addEventListener("mouseleave", () => {
+      isHovering = false;
+
+      card.classList.remove("is-hovered");
+
+      /*
+       * Return card to original state.
+       */
+
+      gsap.to(card, {
+        rotateX: 0,
+        rotateY: 0,
+        z: 0,
+        y: 0,
+        scale: 1,
+
+        duration: 0.5,
+
+        ease: "power3.out",
+
+        overwrite: true,
+      });
+    });
+  });
+
+  /* =====================================================
+     GSAP SCROLLTRIGGER
+  ===================================================== */
+
+  const bgNumber = section.querySelector(
+    ".reviews-bg span:first-child"
+  );
+
+  const bgWord = section.querySelector(
+    ".reviews-bg span:last-child"
+  );
+
+  const header = section.querySelector(".reviews-header");
+
+  const eyebrow = section.querySelector(".reviews-eyebrow");
+
+  const heading = section.querySelector(".reviews-header h2");
+
+  const intro = section.querySelector(".reviews-intro");
+
+  const marquee = section.querySelector(".reviews-marquee");
+
+  const footer = section.querySelector(".reviews-footer");
+
+  /* =====================================================
+     INITIAL STATES
+  ===================================================== */
+
+  gsap.set(bgNumber, {
+    x: -120,
+    opacity: 0,
+  });
+
+  gsap.set(bgWord, {
+    x: 120,
+    opacity: 0,
+  });
+
+  gsap.set(header, {
+    y: 70,
+    opacity: 0,
+  });
+
+  gsap.set(eyebrow, {
+    y: 25,
+    opacity: 0,
+  });
+
+  gsap.set(heading, {
+    y: 70,
+    opacity: 0,
+  });
+
+  gsap.set(intro, {
+    y: 40,
+    opacity: 0,
+  });
+
+  gsap.set(marquee, {
+    y: 100,
+    opacity: 0,
+  });
+
+  /*
+   * Give each card a slightly different
+   * starting rotation.
+   */
+
+  gsap.set(cards, {
+    y: 120,
+    opacity: 0,
+    scale: 0.88,
+
+    rotateZ: (index) => {
+      return index % 2 === 0 ? -4 : 4;
+    },
+
+    rotateY: 12,
+  });
+
+  gsap.set(footer, {
+    y: 40,
+    opacity: 0,
+  });
+
+  /* =====================================================
+     MAIN SCROLL TIMELINE
+  ===================================================== */
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+
+      /*
+       * Animation starts when section
+       * enters the viewport.
+       */
+
+      start: "top 80%",
+
+      /*
+       * Animation finishes around here.
+       */
+
+      end: "top 15%",
+
+      /*
+       * IMPORTANT:
+       *
+       * scrub means the animation follows
+       * the user's scrolling.
+       *
+       * Scroll down → animation plays.
+       * Scroll up   → animation reverses.
+       */
+
+      scrub: 1.2,
+
+      /*
+       * markers: true,
+       */
+    },
+  });
+
+  /* =====================================================
+     BACKGROUND NUMBER
+  ===================================================== */
+
+  tl.to(
+    bgNumber,
+    {
+      x: 0,
+      opacity: 0.3,
+
+      duration: 1,
+
+      ease: "power3.out",
+    },
+    0
+  );
+
+  /* =====================================================
+     BACKGROUND WORD
+  ===================================================== */
+
+  tl.to(
+    bgWord,
+    {
+      x: 0,
+      opacity: 0.18,
+
+      duration: 1,
+
+      ease: "power3.out",
+    },
+    0
+  );
+
+  /* =====================================================
+     HEADER
+  ===================================================== */
+
+  tl.to(
+    header,
+    {
+      y: 0,
+      opacity: 1,
+
+      duration: 0.8,
+
+      ease: "power4.out",
+    },
+    0.05
+  );
+
+  /* =====================================================
+     EYEBROW
+  ===================================================== */
+
+  tl.to(
+    eyebrow,
+    {
+      y: 0,
+      opacity: 1,
+
+      duration: 0.5,
+
+      ease: "power3.out",
+    },
+    0.15
+  );
+
+  /* =====================================================
+     HEADING
+  ===================================================== */
+
+  tl.to(
+    heading,
+    {
+      y: 0,
+      opacity: 1,
+
+      duration: 0.8,
+
+      ease: "power4.out",
+    },
+    0.2
+  );
+
+  /* =====================================================
+     INTRO
+  ===================================================== */
+
+  tl.to(
+    intro,
+    {
+      y: 0,
+      opacity: 1,
+
+      duration: 0.6,
+
+      ease: "power3.out",
+    },
+    0.35
+  );
+
+  /* =====================================================
+     MARQUEE CONTAINER
+  ===================================================== */
+
+  tl.to(
+    marquee,
+    {
+      y: 0,
+      opacity: 1,
+
+      duration: 0.8,
+
+      ease: "power3.out",
+    },
+    0.35
+  );
+
+  /* =====================================================
+     CARDS
+  ===================================================== */
+
+  tl.to(
+    cards,
+    {
+      y: 0,
+      opacity: 1,
+
+      scale: 1,
+
+      rotateZ: 0,
+      rotateY: 0,
+
+      duration: 1,
+
+      stagger: {
+        each: 0.06,
+      },
+
+      ease: "power4.out",
+    },
+    0.45
+  );
+
+  /* =====================================================
+     FOOTER
+  ===================================================== */
+
+  tl.to(
+    footer,
+    {
+      y: 0,
+      opacity: 1,
+
+      duration: 0.6,
+
+      ease: "power3.out",
+    },
+    0.9
+  );
+
+  /* =====================================================
+     BACKGROUND PARALLAX
+  ===================================================== */
+
+  gsap.to(bgNumber, {
+    yPercent: 15,
+
+    ease: "none",
+
+    scrollTrigger: {
+      trigger: section,
+
+      start: "top bottom",
+
+      end: "bottom top",
+
+      scrub: true,
+    },
+  });
+
+  gsap.to(bgWord, {
+    yPercent: -12,
+
+    ease: "none",
+
+    scrollTrigger: {
+      trigger: section,
+
+      start: "top bottom",
+
+      end: "bottom top",
+
+      scrub: true,
+    },
+  });
+
+  /* =====================================================
+     REFRESH
+  ===================================================== */
+
+  /*
+   * Useful because card widths depend on
+   * CSS and viewport size.
+   */
+
+  window.addEventListener("resize", () => {
+    ScrollTrigger.refresh();
+  });
+
+  /* =====================================================
+     CLEANUP
+  ===================================================== */
+
+  window.addEventListener("beforeunload", () => {
+    cancelAnimationFrame(animationId);
+  });
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initReviews();
+});
+
+/* =========================================================
+   VESPER — CONTACT SCROLL ANIMATION
+========================================================= */
+
+function initContactScrollAnimation() {
+  const section = document.querySelector(".contact");
+
+  if (!section) return;
+
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+    console.warn("GSAP or ScrollTrigger is not loaded.");
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* =====================================================
+     ELEMENTS
+  ===================================================== */
+
+  const bgContact = section.querySelector(".contact-bg span:first-child");
+  const bgVesper = section.querySelector(".contact-bg span:last-child");
+
+  const glowOne = section.querySelector(".contact-glow-1");
+  const glowTwo = section.querySelector(".contact-glow-2");
+
+  const header = section.querySelector(".contact-header");
+  const eyebrow = section.querySelector(".contact-eyebrow");
+  const heading = section.querySelector(".contact-header h2");
+  const description = section.querySelector(".contact-header p");
+
+  const content = section.querySelector(".contact-content");
+
+  const details = section.querySelectorAll(".contact-detail");
+  const socials = section.querySelector(".contact-socials");
+
+  const formWrapper = section.querySelector(".contact-form-wrapper");
+
+  const formTop = section.querySelector(".contact-form-top");
+
+  const fields = section.querySelectorAll(".contact-field");
+
+  const submit = section.querySelector(".contact-submit");
+
+  const bottom = section.querySelector(".contact-bottom");
+
+  /* =====================================================
+     INITIAL STATES
+  ===================================================== */
+
+  /*
+   * Background typography
+   */
+
+  gsap.set(bgContact, {
+    x: -180,
+    opacity: 0,
+  });
+
+  gsap.set(bgVesper, {
+    x: 180,
+    opacity: 0,
+  });
+
+  /*
+   * Ambient glows
+   */
+
+  gsap.set(glowOne, {
+    scale: 0.6,
+    opacity: 0,
+  });
+
+  gsap.set(glowTwo, {
+    scale: 0.6,
+    opacity: 0,
+  });
+
+  /*
+   * Header
+   */
+
+  gsap.set(header, {
+    opacity: 0,
+    x: -80,
+  });
+
+  gsap.set(eyebrow, {
+    opacity: 0,
+    y: 25,
+  });
+
+  gsap.set(heading, {
+    opacity: 0,
+    y: 70,
+  });
+
+  gsap.set(description, {
+    opacity: 0,
+    y: 35,
+  });
+
+  /*
+   * Left details
+   */
+
+  gsap.set(details, {
+    opacity: 0,
+    x: -60,
+  });
+
+  gsap.set(socials, {
+    opacity: 0,
+    x: -60,
+  });
+
+  /*
+   * Form
+   */
+
+  gsap.set(formWrapper, {
+    opacity: 0,
+    y: 100,
+    scale: 0.96,
+  });
+
+  gsap.set(formTop, {
+    opacity: 0,
+    y: 20,
+  });
+
+  gsap.set(fields, {
+    opacity: 0,
+    y: 35,
+  });
+
+  gsap.set(submit, {
+    opacity: 0,
+    y: 30,
+  });
+
+  /*
+   * Bottom
+   */
+
+  gsap.set(bottom, {
+    opacity: 0,
+    y: 35,
+  });
+
+  /* =====================================================
+     MAIN TIMELINE
+  ===================================================== */
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+
+      /*
+       * Start when Contact enters
+       * the lower portion of viewport.
+       */
+
+      start: "top 80%",
+
+      /*
+       * Finish while the section
+       * reaches the upper portion.
+       */
+
+      end: "top 10%",
+
+      /*
+       * VERY IMPORTANT:
+       *
+       * This makes the animation
+       * follow the scroll.
+       *
+       * Scroll down → plays.
+       * Scroll up → reverses.
+       */
+
+      scrub: 1.2,
+
+      /*
+       * markers: true,
+       */
+    },
+  });
+
+  /* =====================================================
+     BACKGROUND TYPOGRAPHY
+  ===================================================== */
+
+  tl.to(
+    bgContact,
+    {
+      x: 0,
+      opacity: 0.35,
+
+      duration: 1.2,
+
+      ease: "power3.out",
+    },
+    0
+  );
+
+  tl.to(
+    bgVesper,
+    {
+      x: 0,
+      opacity: 0.8,
+
+      duration: 1.2,
+
+      ease: "power3.out",
+    },
+    0
+  );
+
+  /* =====================================================
+     AMBIENT GLOWS
+  ===================================================== */
+
+  tl.to(
+    glowOne,
+    {
+      scale: 1,
+      opacity: 0.08,
+
+      duration: 1.2,
+
+      ease: "power2.out",
+    },
+    0
+  );
+
+  tl.to(
+    glowTwo,
+    {
+      scale: 1,
+      opacity: 0.08,
+
+      duration: 1.2,
+
+      ease: "power2.out",
+    },
+    0.15
+  );
+
+  /* =====================================================
+     HEADER
+  ===================================================== */
+
+  tl.to(
+    header,
+    {
+      opacity: 1,
+      x: 0,
+
+      duration: 0.8,
+
+      ease: "power4.out",
+    },
+    0.05
+  );
+
+  /* =====================================================
+     EYEBROW
+  ===================================================== */
+
+  tl.to(
+    eyebrow,
+    {
+      opacity: 1,
+      y: 0,
+
+      duration: 0.5,
+
+      ease: "power3.out",
+    },
+    0.15
+  );
+
+  /* =====================================================
+     MAIN HEADING
+  ===================================================== */
+
+  tl.to(
+    heading,
+    {
+      opacity: 1,
+      y: 0,
+
+      duration: 0.8,
+
+      ease: "power4.out",
+    },
+    0.2
+  );
+
+  /* =====================================================
+     DESCRIPTION
+  ===================================================== */
+
+  tl.to(
+    description,
+    {
+      opacity: 1,
+      y: 0,
+
+      duration: 0.6,
+
+      ease: "power3.out",
+    },
+    0.35
+  );
+
+  /* =====================================================
+     LEFT CONTACT DETAILS
+  ===================================================== */
+
+  tl.to(
+    details,
+    {
+      opacity: 1,
+      x: 0,
+
+      duration: 0.7,
+
+      stagger: {
+        each: 0.12,
+      },
+
+      ease: "power3.out",
+    },
+    0.45
+  );
+
+  /* =====================================================
+     SOCIAL LINKS
+  ===================================================== */
+
+  tl.to(
+    socials,
+    {
+      opacity: 1,
+      x: 0,
+
+      duration: 0.6,
+
+      ease: "power3.out",
+    },
+    0.8
+  );
+
+  /* =====================================================
+     FORM PANEL
+  ===================================================== */
+
+  tl.to(
+    formWrapper,
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+
+      duration: 1,
+
+      ease: "power4.out",
+    },
+    0.35
+  );
+
+  /* =====================================================
+     FORM TOP
+  ===================================================== */
+
+  tl.to(
+    formTop,
+    {
+      opacity: 1,
+      y: 0,
+
+      duration: 0.5,
+
+      ease: "power3.out",
+    },
+    0.65
+  );
+
+  /* =====================================================
+     FORM FIELDS
+  ===================================================== */
+
+  tl.to(
+    fields,
+    {
+      opacity: 1,
+      y: 0,
+
+      duration: 0.6,
+
+      stagger: {
+        each: 0.12,
+      },
+
+      ease: "power3.out",
+    },
+    0.7
+  );
+
+  /* =====================================================
+     SUBMIT BUTTON
+  ===================================================== */
+
+  tl.to(
+    submit,
+    {
+      opacity: 1,
+      y: 0,
+
+      duration: 0.6,
+
+      ease: "power3.out",
+    },
+    1.05
+  );
+
+  /* =====================================================
+     BOTTOM STATEMENT
+  ===================================================== */
+
+  tl.to(
+    bottom,
+    {
+      opacity: 1,
+      y: 0,
+
+      duration: 0.6,
+
+      ease: "power3.out",
+    },
+    1.15
+  );
+
+  /* =====================================================
+     BACKGROUND PARALLAX
+  ===================================================== */
+
+  gsap.to(bgContact, {
+    yPercent: -12,
+
+    ease: "none",
+
+    scrollTrigger: {
+      trigger: section,
+
+      start: "top bottom",
+      end: "bottom top",
+
+      scrub: true,
+    },
+  });
+
+  gsap.to(bgVesper, {
+    yPercent: 15,
+
+    ease: "none",
+
+    scrollTrigger: {
+      trigger: section,
+
+      start: "top bottom",
+      end: "bottom top",
+
+      scrub: true,
+    },
+  });
+
+  /* =====================================================
+     GLOW PARALLAX
+  ===================================================== */
+
+  gsap.to(glowOne, {
+    xPercent: 20,
+    yPercent: -15,
+
+    ease: "none",
+
+    scrollTrigger: {
+      trigger: section,
+
+      start: "top bottom",
+      end: "bottom top",
+
+      scrub: 1,
+    },
+  });
+
+  gsap.to(glowTwo, {
+    xPercent: -20,
+    yPercent: 15,
+
+    ease: "none",
+
+    scrollTrigger: {
+      trigger: section,
+
+      start: "top bottom",
+      end: "bottom top",
+
+      scrub: 1,
+    },
+  });
+}
+
+initContactScrollAnimation();
+
 function cursorAnimation() {
   let crsrDot = document.querySelector(".dot");
   let crsrRing = document.querySelector(".ring");
@@ -1520,153 +3019,3 @@ function magneticButtons() {
 }
 
 magneticButtons();
-
-
-/* =========================================
-   VESPER — REVIEW CARDS
-   Infinite movement + Hover scale + 3D tilt
-========================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".reviews-track");
-  const cards = document.querySelectorAll(".review-card");
-
-  if (!track || !cards.length) return;
-
-  /* =========================================
-       INFINITE MOVEMENT
-    ========================================= */
-
-  let position = 0;
-  let speed = 0.35;
-  let animationId;
-
-  function animateReviews() {
-    position -= speed;
-
-    /*
-     * Once the track has moved far enough,
-     * reset it back to the beginning.
-     *
-     * Because the cards are duplicated in the HTML,
-     * the reset happens without the user noticing.
-     */
-
-    const firstCard = cards[0];
-
-    if (firstCard) {
-      const cardWidth =
-        firstCard.offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
-
-      /*
-       * Reset after one complete set of cards.
-       */
-
-      if (Math.abs(position) >= cardWidth * (cards.length / 2)) {
-        position = 0;
-      }
-    }
-
-    track.style.transform = `translate3d(${position}px, 0, 0)`;
-
-    animationId = requestAnimationFrame(animateReviews);
-  }
-
-  animateReviews();
-
-  /* =========================================
-       CARD HOVER
-    ========================================= */
-
-  cards.forEach((card) => {
-    /* -------------------------------------
-           MOUSE ENTER
-        ------------------------------------- */
-
-    card.addEventListener("mouseenter", () => {
-      /*
-       * Stop the infinite movement.
-       */
-
-      speed = 0;
-
-      /*
-       * Bring the hovered card above
-       * the other cards.
-       */
-
-      card.classList.add("is-hovered");
-    });
-
-    /* -------------------------------------
-           MOUSE MOVE
-        ------------------------------------- */
-
-    card.addEventListener("mousemove", (event) => {
-      const rect = card.getBoundingClientRect();
-
-      /*
-       * Find mouse position inside card.
-       */
-
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
-
-      /*
-       * Convert mouse position into
-       * a value between -1 and 1.
-       *
-       * Center = 0
-       * Left   = -1
-       * Right  = 1
-       */
-
-      const rotateY = (mouseX / rect.width - 0.5) * 20;
-
-      const rotateX = (mouseY / rect.height - 0.5) * -20;
-
-      /*
-       * Apply the 3D tilt.
-       */
-
-      card.style.transform = `
-                translateY(-12px)
-                scale(1.08)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-            `;
-    });
-
-    /* -------------------------------------
-           MOUSE LEAVE
-        ------------------------------------- */
-
-    card.addEventListener("mouseleave", () => {
-      /*
-       * Remove hover state.
-       */
-
-      card.classList.remove("is-hovered");
-
-      /*
-       * Return card to normal position.
-       */
-
-      card.style.transform = "";
-
-      /*
-       * Restart infinite movement.
-       */
-
-      speed = 0.35;
-    });
-  });
-
-  /* =========================================
-       CLEANUP
-    ========================================= */
-
-  window.addEventListener("beforeunload", () => {
-    cancelAnimationFrame(animationId);
-  });
-});

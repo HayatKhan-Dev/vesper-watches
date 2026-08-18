@@ -1911,8 +1911,19 @@ body.light .toggle-thumb i {
 
 .story {
     position: relative;
+    height: 400vh;
+    background: var(--clr-bg);
+    isolation: isolate;
+}
 
-    min-height: 100vh;
+.story-pin {
+    position: sticky;
+
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
 
     padding: 8rem 5vw 4rem;
 
@@ -1971,6 +1982,8 @@ body.light .toggle-thumb i {
         1px var(--glass-border);
 
     opacity: .18;
+
+    will-change: transform, opacity;
 }
 
 
@@ -2088,14 +2101,15 @@ body.light .toggle-thumb i {
 .story-stage {
     position: relative;
 
-    min-height: 850px;
+    width: 100%;
+    height: calc(100vh - 11rem);
+    height: calc(100svh - 11rem);
 
     margin-top: 2rem;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 }
 
@@ -2126,11 +2140,13 @@ body.light .toggle-thumb i {
     white-space: nowrap;
 
     pointer-events: none;
+
+    will-change: transform, opacity;
 }
 
 
 .story-title-top {
-    top: 7%;
+    top: 4%;
 
     left: 50%;
 
@@ -2141,14 +2157,14 @@ body.light .toggle-thumb i {
 .story-title-left {
     left: 2%;
 
-    top: 40%;
+    top: 42%;
 }
 
 
 .story-title-right {
     right: 2%;
 
-    top: 40%;
+    top: 42%;
 
     color: transparent;
 
@@ -2158,7 +2174,7 @@ body.light .toggle-thumb i {
 
 
 .story-title-bottom {
-    bottom: 5%;
+    bottom: 2%;
 
     left: 50%;
 
@@ -2189,6 +2205,8 @@ body.light .toggle-thumb i {
     justify-content: center;
 
     z-index: 5;
+
+    will-change: transform;
 }
 
 
@@ -2291,10 +2309,11 @@ body.light .toggle-thumb i {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     z-index: 5;
+
+    will-change: transform;
 }
 
 
@@ -2308,6 +2327,8 @@ body.light .toggle-thumb i {
 
     z-index: 5;
 
+    will-change: transform;
+
     filter:
         drop-shadow(
             0 50px 70px rgba(0,0,0,.65)
@@ -2316,7 +2337,6 @@ body.light .toggle-thumb i {
             0 0 40px rgba(0,229,139,.12)
         );
 }
-
 
 /* Ground shadow */
 
@@ -2876,6 +2896,9 @@ body.light .toggle-thumb i {
     height: 430px;
 
     padding: 1.8rem;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform;
 
     display: flex;
 
@@ -2910,6 +2933,10 @@ body.light .toggle-thumb i {
         opacity .35s ease;
 
     cursor: pointer;
+}
+
+.reviews-track {
+    perspective: 1200px;
 }
 
 
@@ -3365,7 +3392,7 @@ body.light .toggle-thumb i {
     font-weight: var(--fw-regular);
 
     line-height: .75;
-
+    will-change: transform, opacity;
     white-space: nowrap;
 
     color: transparent;
@@ -3425,6 +3452,7 @@ body.light .toggle-thumb i {
     border-radius: 50%;
 
     filter: blur(120px);
+    will-change: transform, opacity;
 
     pointer-events: none;
 
@@ -3728,6 +3756,8 @@ body.light .toggle-thumb i {
         var(--space-3xl)
     );
 
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
     border: 1px solid var(--glass-border);
 
     border-radius: var(--radius-xl);
